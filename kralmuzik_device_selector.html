@@ -63,6 +63,7 @@
   $( document ).ready(function() { 
     let deviceOS_name = $("#device-detected-title")[0].innerHTML;
     $("#device-detected-title")[0].append(getMobileOperatingSystem());
+    console.log("Device Name : " + getMobileOperatingSystem())
   });
 
   function getMobileOperatingSystem() {
