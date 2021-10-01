@@ -45,6 +45,11 @@
         display: block !important;
       }
     }
+
+    .linkButtonFrame{
+      width: 400px;
+      height: 200px;
+    }
   </style>
   
 
@@ -54,17 +59,23 @@
 
 <body>
     <div class="download-link-frame">  
-          <h1 id="device-detected-title"></div>  
-             
+          <h1 id="device-detected-title" style="display: none!important;"></div>  
     </div> 
 </body>
  
 
 <script type="text/javascript"> 
-  $( document ).ready(function() { 
+  $( document ).ready(function() {  
     let deviceOS_name = $("#device-detected-title")[0].innerHTML;
     $("#device-detected-title")[0].append(getMobileOperatingSystem());
     console.log("Device Name : " + getMobileOperatingSystem())
+    if(getMobileOperatingSystem() === "Android"){
+      //window.open('');
+      window.location.href = 'https://play.google.com/store/apps/details?id=com.basarimobile.android.kral&hl=tr&gl=US';
+    }
+    else if(getMobileOperatingSystem() === "iOS"){
+      window.location.href = 'https://apps.apple.com/tr/app/kral/id384593182?l=tr';
+    }
   });
 
   function getMobileOperatingSystem() {
