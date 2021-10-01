@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRAL MUZIK - DEVICE DETECTED</title>
+</head>
+<style>
+    [data-device-selector-item] {
+      display: none;
+    }
+    @media
+    only screen and (max-width: 768px) {
+      [data-device-selector-devicetype="mobile"] {
+        display: block !important;
+      }
+    }
+    @media
+    only screen and (min-width: 769px) and (max-width: 960px) {
+      [data-device-selector-devicetype="tablet"] {
+        display: block !important;
+      }
+    }
+    @media
+    only screen and (min-width: 961px) and (max-width: 1200px) {
+      [data-device-selector-devicetype="desktop"] {
+        display: block !important;
+      }
+    }
+    @media
+    only screen and (min-width: 1201px) {
+      [data-device-selector-devicetype="large-desktop"] {
+        display: block !important;
+      }
+    }
+    @media
+    only screen and (-webkit-min-device-pixel-ratio: 2),
+    only screen and (   min--moz-device-pixel-ratio: 2),
+    only screen and (     -o-min-device-pixel-ratio: 2/1),
+    only screen and (        min-device-pixel-ratio: 2),
+    only screen and (                min-resolution: 192dpi),
+    only screen and (                min-resolution: 2dppx) {
+      [data-device-selector-displaytype="retina"] {
+        display: block !important;
+      }
+    }
+  </style>
+  
+
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="dist/jquery.device.selector.js"></script>
+
+
+<body>
+    <div class="download-link-frame">  
+          <h1 id="device-detected-title"></div>  
+    </div> 
+</body>
+ 
+
+<script type="text/javascript"> 
+  $( document ).ready(function() { 
+    let deviceOS_name = $("#device-detected-title")[0].innerHTML;
+    $("#device-detected-title")[0].append(getMobileOperatingSystem());
+  });
+
+  function getMobileOperatingSystem() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+        // Windows Phone must come first because its UA also contains "Android"
+        if (/windows phone/i.test(userAgent)) {
+            return "Windows Phone";
+        }
+        // ANDROID detection 
+        if (/android/i.test(userAgent)) {
+            return "Android";
+        }
+
+        // iOS detection 
+        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+            return "iOS";
+        }
+
+        return "";
+    }
+</script>
+</html>
