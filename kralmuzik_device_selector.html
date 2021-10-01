@@ -82,7 +82,6 @@
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
         userAgent = userAgent.toLowerCase();
         // Windows Phone must come first because its UA also contains "Android"
-        navigator.userAgent.toLowerCase().indexOf("android") > -1
         if (userAgent.indexOf("windows phone") > -1) {
             return "Windows Phone";
         }
