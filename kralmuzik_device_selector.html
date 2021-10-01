@@ -44,17 +44,11 @@
       [data-device-selector-displaytype="retina"] {
         display: block !important;
       }
-    }
-
-    .linkButtonFrame{
-      width: 400px;
-      height: 200px;
-    }
+    } 
   </style>
   
 
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
-<script src="dist/jquery.device.selector.js"></script>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script> 
 
 
 <body>
@@ -71,27 +65,32 @@
     console.log("Device Name : " + getMobileOperatingSystem())
     if(getMobileOperatingSystem() === "Android"){
       //window.open('');
-      window.location.href = 'https://play.google.com/store/apps/details?id=com.basarimobile.android.kral&hl=tr&gl=US';
+      //window.location.href = 'https://play.google.com/store/apps/details?id=com.basarimobile.android.kral&hl=tr&gl=US';
+      if(confirm("Download app?")) {
+          window.location.href= "market://details?id=<com.basarimobile.android.kral>";
+      }
     }
     else if(getMobileOperatingSystem() === "iOS"){
-      window.location.href = 'https://apps.apple.com/tr/app/kral/id384593182?l=tr';
+      //window.location.href = 'https://apps.apple.com/tr/app/kral/id384593182?l=tr';
     }
   });
 
   function getMobileOperatingSystem() {
         var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
+        userAgent = userAgent.toLowerCase();
         // Windows Phone must come first because its UA also contains "Android"
-        if (/windows phone/i.test(userAgent)) {
+        navigator.userAgent.toLowerCase().indexOf("android") > -1
+        if (userAgent.indexOf("windows phone") > -1) {
             return "Windows Phone";
         }
         // ANDROID detection 
+        if (userAgent.indexOf("android") > -1)
         if (/android/i.test(userAgent)) {
             return "Android";
         }
 
         // iOS detection 
-        if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+        if (userAgent.indexOf("ipad") > -1 ||  userAgent.indexOf("iphone") > -1 || userAgent.indexOf("ipod") > -1) {
             return "iOS";
         }
 
